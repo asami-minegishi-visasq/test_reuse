@@ -36,7 +36,6 @@ jobs:
     needs: set-inputs
     uses: asami-minegishi-visasq/test/.github/workflows/main.yml@feature/test_mine
     with:
-      is_switch_traffic: ${{ inputs.is_switch_traffic }}
       service_name: test
       app-version: v1
       region: us-central1
