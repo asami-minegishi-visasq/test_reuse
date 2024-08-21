@@ -33,6 +33,7 @@ jobs:
           echo "slack_channel=C0185CQ1Q3S" >> $GITHUB_OUTPUT
 
   Deployment:
+    needs: set-inputs
     uses: asami-minegishi-visasq/test/.github/workflows/main.yml@feature/test_mine
     with:
       is_switch_traffic: ${{ inputs.is_switch_traffic }}
