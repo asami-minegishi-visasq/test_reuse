@@ -34,7 +34,6 @@ jobs:
 
   Deployment:
     permissions:
-      contents: 'read'
       id-token: 'write'
     needs: set-inputs
     uses: asami-minegishi-visasq/test/.github/workflows/main.yml@feature/test_mine
