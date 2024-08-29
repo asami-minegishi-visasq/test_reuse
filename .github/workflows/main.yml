@@ -40,7 +40,7 @@ jobs:
     uses: asami-minegishi-visasq/test/.github/workflows/main.yml@feature/test_mine
     with:
       service_name: test
-      app-version: v1
+      app_version: v1
       region: us-central1
       environment: ${{ needs.set-inputs.outputs.environment }}
       project_id: ${{ needs.set-inputs.outputs.project_id }}
