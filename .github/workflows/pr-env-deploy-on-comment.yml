@@ -1,0 +1,22 @@
+name: pr-env-deploy-on-comment
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [closed]
+
+
+jobs:
+  Deployment:
+    permissions:
+      contents: 'write'
+      id-token: 'write'
+    uses: asami-minegishi-visasq/test/.github/workflows/pr-env-deploy-on-comment.yml@feature/test_mine
+    with:
+      service_name: test
+      app_version: v1
+      region: us-central1
+      environment: 'stg'
+      project_id: '400301755221'
+      project_name: 'private-asami-minegishi-01'
+      revision_base: 'staging'
