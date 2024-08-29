@@ -7,6 +7,7 @@ env:
   APP_VERSION: v1
   REGION: us-central1
 
+
 jobs:
   gcloud-test:
     runs-on: ubuntu-latest
