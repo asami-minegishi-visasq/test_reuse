@@ -7,6 +7,11 @@ on:
 
 
 jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test-job"
+
   Deployment:
     permissions:
       contents: 'write'
