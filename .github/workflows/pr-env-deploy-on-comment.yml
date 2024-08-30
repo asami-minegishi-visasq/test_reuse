@@ -15,9 +15,3 @@ jobs:
     with:
       service_name: test
       app_version: v1
-      region: us-central1
-      environment: 'stg'
-      project_id: '400301755221'
-      project_name: 'private-asami-minegishi-01'
-      revision_base: 'staging'
-      slack_channel: 'C0185CQ1Q3S'
