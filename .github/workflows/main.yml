@@ -12,38 +12,11 @@ on:
       - staging
 
 jobs:
-  set-inputs:
-    runs-on: ubuntu-latest
-    outputs:
-      environment: ${{ steps.set_env_production.outputs.environment || 'stg' }}
-      project_id: ${{ steps.set_env_production.outputs.project_id || '400301755221' }}
-      project_name: ${{ steps.set_env_production.outputs.project_name || 'private-asami-minegishi-01' }}
-      revision_base: ${{ steps.set_env_production.outputs.revision_base || 'staging' }}
-      slack_channel: ${{ steps.set_env_production.outputs.slack_channel || 'C0185CQ1Q3S' }}
-    steps:
-      - name: Set environment for branch and tag
-        id: set_env_production
-        if: github.base_ref == 'main' || github.ref_name == 'main'
-        run: |
-          echo "revision_base=release" >> $GITHUB_OUTPUT
-          echo "environment=prod" >> $GITHUB_OUTPUT
-          echo "ready_tag_name=ready-prod" >> $GITHUB_OUTPUT
-          echo "project_id=400301755221" >> $GITHUB_OUTPUT
-          echo "project_name=private-asami-minegishi-01" >> $GITHUB_OUTPUT
-          echo "slack_channel=C0185CQ1Q3S" >> $GITHUB_OUTPUT
-
   Deployment:
     permissions:
       contents: 'write'
       id-token: 'write'
-    needs: set-inputs
     uses: asami-minegishi-visasq/test/.github/workflows/main.yml@feature/test_mine
     with:
       service_name: test
       app_version: v1
-      region: us-central1
-      environment: ${{ needs.set-inputs.outputs.environment }}
-      project_id: ${{ needs.set-inputs.outputs.project_id }}
-      project_name: ${{ needs.set-inputs.outputs.project_name }}
-      revision_base: ${{ needs.set-inputs.outputs.revision_base }}
-      slack_channel: ${{ needs.set-inputs.outputs.slack_channel }}
